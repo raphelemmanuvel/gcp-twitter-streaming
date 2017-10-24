@@ -10,10 +10,10 @@ gcloud docker push gcr.io/$DEVSHELL_PROJECT_ID/tweets-to-pubsub-pipleline
 gcloud beta pubsub topics create epl_tweets
 
 #Create a Google Container Engine Cluster and enable it to write to Pub/Sub
-gcloud container clusters create epl-tweets-analytics-cluster --num-nodes=1 --scopes=https://www.googleapis.com/auth/pubsub
+gcloud container clusters create twitter-streaming-data-pipeline-gcp-cluster --num-nodes=1 --scopes=https://www.googleapis.com/auth/pubsub
 
 #Get the credentials to access the pubsub_pipleine
-gcloud container clusters get-credentials epl-tweets-analytics-cluster
+gcloud container clusters get-credentials twitter-streaming-data-pipeline-gcp-cluster
 
 #Deploy the pubsub_pipleine to the cluster
 kubectl create -f twitter-streaming-data-pipeline-gcp/twitter-to-pubsub/tweets-to-pubsub.yaml
