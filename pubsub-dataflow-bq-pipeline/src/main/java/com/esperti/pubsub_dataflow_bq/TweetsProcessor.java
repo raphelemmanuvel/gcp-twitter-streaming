@@ -169,7 +169,7 @@ public class TweetsProcessor
 
 		//Read tweets from pubsub
 		PCollection<String> tweets = null;
-		tweets = p.apply(PubsubIO.Read.named("Read tweets from Pub Sub").topic("projects/"+ project_id+ "/topic/epl-tweets"));
+		tweets = p.apply(PubsubIO.Read.named("Read tweets from Pub Sub").topic("projects/"+ project_id+ "/topics/epl-tweets"));
 
 
 		 // Format tweets for BigQuery
