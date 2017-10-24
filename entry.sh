@@ -10,16 +10,16 @@ gcloud docker push gcr.io/$DEVSHELL_PROJECT_ID/tweets-to-pubsub-pipleline
 gcloud beta pubsub topics create epl_tweets
 
 #Create a Google Container Engine Cluster and enable it to write to Pub/Sub
-gcloud container clusters create twitter-streaming-data-pipeline-gcp-cluster --zone=us-central1-f --num-nodes=1 --scopes=https://www.googleapis.com/auth/pubsub
+gcloud container clusters create twitter-streaming-cluster --zone=us-central1-f --num-nodes=1 --scopes=https://www.googleapis.com/auth/pubsub
 
 #Get the credentials to access the pubsub_pipleine
-gcloud container clusters get-credentials twitter-streaming-data-pipeline-gcp-cluster --zone=us-central1-f
+gcloud container clusters get-credentials twitter-streaming-cluster --zone=us-central1-f
 
 #Deploy the pubsub_pipleine to the cluster
 kubectl create -f twitter-streaming-data-pipeline-gcp/twitter-to-pubsub/tweets-to-pubsub.yaml
 
 #Create the BigQuery Dataset to save the tweets
-bq mq epl_analytics
+bq mk epl_analytics
 
 #Start the Dataflow pipeleine that will take the tweets from pubsub topic and
 #do NLP processing for sentimental analysis and save the tweets to BigQUery
