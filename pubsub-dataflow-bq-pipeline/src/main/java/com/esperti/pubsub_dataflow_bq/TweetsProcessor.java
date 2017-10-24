@@ -170,7 +170,7 @@ public class TweetsProcessor
 		//Read tweets from pubsub
 		PCollection<String> tweets = null;
 		tweets = p.apply(PubsubIO.Read.named("Read tweets from Pub Sub").topic("projects/"+ project_id+ "/topics/epl-tweets"));
-
+		LOG.info(tweets);
 
 		 // Format tweets for BigQuery
         PCollection<TableRow> formattedTweets = tweets.apply(ParDo.named("Format tweets for BigQuery").of(new DoFormat()));
