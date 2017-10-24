@@ -116,7 +116,7 @@ public class TweetsProcessor
                 if (jsonTweet != null && jsonTweet.getAsJsonPrimitive("text") != null && jsonTweet.getAsJsonPrimitive("lang") != null) {
 
                     // Process the element only if it contains "epl" (even not as an hashtag)
-                    if ((jsonTweet.getAsJsonPrimitive("text").getAsString().toLowerCase().contains("blackfriday")) && jsonTweet.getAsJsonPrimitive("lang").getAsString().equalsIgnoreCase("en")) {
+                    if ((jsonTweet.getAsJsonPrimitive("text").getAsString().toLowerCase().contains("epl")) && jsonTweet.getAsJsonPrimitive("lang").getAsString().equalsIgnoreCase("en")) {
 
                         LOG.info("Processing tweet: " + c.element());
 
@@ -169,7 +169,7 @@ public class TweetsProcessor
 
 		//Read tweets from pubsub
 		PCollection<String> tweets = null;
-		tweets = p.apply(PubsubIO.Read.named("Read tweets from Pub Sub").topic("projects/"+ project_id+ "/topic/epl_tweets"));
+		tweets = p.apply(PubsubIO.Read.named("Read tweets from Pub Sub").topic("projects/"+ project_id+ "/topic/epl-tweets"));
 
 
 		 // Format tweets for BigQuery

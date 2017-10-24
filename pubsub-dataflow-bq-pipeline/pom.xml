@@ -89,7 +89,7 @@
     <dependency>
       <groupId>com.google.cloud.dataflow</groupId>
       <artifactId>google-cloud-dataflow-java-sdk-all</artifactId>
-      <version>1.8.0</version>
+      <version>[1.9.1,1.99)</version>
     </dependency>
 
     <dependency>

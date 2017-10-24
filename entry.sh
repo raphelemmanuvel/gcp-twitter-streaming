@@ -4,10 +4,10 @@
 docker build -t gcr.io/$DEVSHELL_PROJECT_ID/tweets-to-pubsub-pipleline twitter-streaming-data-pipeline-gcp/twitter-to-pubsub
 
 #Save the docker image to GCR
-gcloud docker push gcr.io/$DEVSHELL_PROJECT_ID/tweets-to-pubsub-pipleline
+gcloud docker --push gcr.io/$DEVSHELL_PROJECT_ID/tweets-to-pubsub-pipleline
 
 #Create a pubsup topic to collect the tweets_to_pubsub
-gcloud beta pubsub topics create epl_tweets
+gcloud beta pubsub topics create epl-tweets
 
 #Create a Google Container Engine Cluster and enable it to write to Pub/Sub
 gcloud container clusters create twitter-streaming-cluster --zone=us-central1-f --num-nodes=1 --scopes=https://www.googleapis.com/auth/pubsub
