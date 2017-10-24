@@ -4,7 +4,7 @@
 docker build -t gcr.io/$DEVSHELL_PROJECT_ID/tweets-to-pubsub-pipleline twitter-streaming-data-pipeline-gcp/twitter-to-pubsub
 
 #Save the docker image to GCR
-gcloud docker --push gcr.io/$DEVSHELL_PROJECT_ID/tweets-to-pubsub-pipleline
+gcloud docker -- push gcr.io/$DEVSHELL_PROJECT_ID/tweets-to-pubsub-pipleline
 
 #Create a pubsup topic to collect the tweets_to_pubsub
 gcloud beta pubsub topics create epl-tweets
