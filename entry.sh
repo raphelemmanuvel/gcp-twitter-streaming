@@ -24,4 +24,4 @@ bq mk epl_analytics
 #Start the Dataflow pipeleine that will take the tweets from pubsub topic and
 #do NLP processing for sentimental analysis and save the tweets to BigQUery
 cd twitter-streaming-data-pipeline-gcp/pubsub-dataflow-bq-pipeline/
-mvn compile exec:java -Dexec.mainClass = com.esperti.pubsub_dataflow_bq.TweetsProcessor -Dexec.args="--streaming --stagingLocation=gs://epl_sentimental_analysis --project=$DEVSHELL_PROJECT_ID"
+mvn compile -e exec:java -Dexec.mainClass=com.esperti.pubsub_dataflow_bq.TweetsProcessor -Dexec.args="--streaming --stagingLocation=gs://epl_sentimental_analysis --project=$DEVSHELL_PROJECT_ID"
