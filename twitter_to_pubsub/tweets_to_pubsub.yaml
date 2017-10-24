@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: epl_tweets
+  labels:
+    name: epl-tweets
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: epl-tweets
+    spec:
+      containers:
+      - name: epl-tweets
+        image: gcr.io/cpb100-181220/tweets_to_pubsub_pipleline
+        env:
+        - name: PUBSUB_TOPIC
+          value: projects/cpb100-181220/topics/epl_tweets
+        - name: CONSUMERKEY       #Twitter consumer key
+          value: cqlDJkLdrOm3npiIYD0YwxWn9
+        - name: CONSUMERSECRET    #Twitter Consumer Secret
+          value: ZLa7Pv5ssxalyeyeD179u2FOd9eOujHnwoqnjMblmsskoX46ir
+        - name: ACCESSTOKEN       #Twitter Access Token
+          value: 372630683-mUoYZLYhP5nszK2RaRrGTkn37b2oiF7G9BUECJfW
+        - name: ACCESSTOKENSEC    #Twitter Access Token Secret
+          value: r46w8Coowktc6zY8w6xBMgrv85arf2SvPv4Hq5nAlyn30
